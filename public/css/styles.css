@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa&family=Raleway&family=Corinthia&family=Montserrat&display=swap');
 /******* Change Box Model ***************/
-/* *,
+*,
 *:before,
 *:after {
   box-sizing: border-box;
-} */
+}
 
 /* ------ VARIABLES & GENERAL ------ */
 :root {
@@ -120,6 +120,7 @@ main {
 
 .hero-container {
   position: relative;
+  text-align: right;
 }
 
 .hero-image {
@@ -137,6 +138,7 @@ main {
   background-color: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(.25rem);
   backdrop-filter: blur(.25rem);
+  text-align: left;
   color: var(--primary-color);
   font-weight: bold;
 }
@@ -184,7 +186,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin: .5rem;
+  margin: 1rem .5rem;
 }
 
 .upgrade-card {
@@ -220,4 +222,54 @@ main {
 
 footer {
   padding: .25rem;
+}
+
+@media screen and (min-width: 500px) {
+  main {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  main {
+    max-width: none;
+  }
+
+  .hero-container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  /* .sections-grid {
+    grid-template-columns: 4fr 3fr;
+  } */
+
+  .sections-grid section:nth-child(1) {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+
+  .sections-grid section:nth-child(2) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    background-image: url('/images/site/small_check.jpg');
+  }
+
+  #wrapper {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 800px;
+    border: .25rem solid var(--secondary-color);
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+  }
+
+  main {
+    max-width: 800px;
+  }
 }
