@@ -208,7 +208,7 @@ main {
 }
 
 .upgrade-card:hover .upgrade-img {
-  scale: .95;
+  transform: scale(.95);
 }
 
 .upgrade-img {
