@@ -99,16 +99,20 @@ nav ul {
   padding: 0;
   display: flex;
   justify-content: space-around;
-  color: #FFFFFF;
 }
 
 nav ul li {
   cursor: pointer;
   line-height: 4rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #FFFFFF;
   transition: var(--transition);
 }
 
-nav ul li:hover {
+nav ul li a:hover {
   color: var(--contrast-color);
 }
 
