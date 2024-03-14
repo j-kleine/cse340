@@ -224,6 +224,42 @@ main {
   transition: var(--transition);
 }
 
+/* ------------------------------- */
+#inv-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+}
+
+#inv-display li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
+  background-color: #FFFFFF;
+  box-shadow: var(--box-shadow);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+#inv-display li:hover {
+  box-shadow: transparent 0px 3px 8px;
+  border: 1px solid var(--secondary-color);
+}
+
+#inv-display li a img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: var(--transition);
+}
+
 footer {
   padding: .25rem;
 }
