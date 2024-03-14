@@ -1,13 +1,11 @@
-const { Pool } = require("pg");
-require("dotenv").config();
-
-// ***************
-// * Connection Pool
-// * SSL Object needed for local testing of app
-// * But will cause problems in production environment
-// * If - else will make determination which to use
-// * ***************
-
+const { Pool } = require("pg")
+require("dotenv").config()
+/* ***************
+ * Connection Pool
+ * SSL Object needed for local testing of app
+ * But will cause problems in production environment
+ * If - else will make determination which to use
+ * *************** */
 let pool;
 if (process.env.NODE_ENV == "development") {
     pool = new Pool({
@@ -33,7 +31,7 @@ if (process.env.NODE_ENV == "development") {
     }
 } else {
     pool = new Pool({
-        connectionString: process.env,DATABASE_URL,
+        connectionString: process.env.DATABASE_URL,
     })
     module.exports = pool;
 }
