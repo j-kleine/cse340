@@ -27,17 +27,17 @@ Util.getNav = async function (req, res, next) {
 
 // * **************************************
 // * Build the classification view HTML
-// * ************************************
+// * **************************************
 Util.buildClassificationGrid = async function(data) {
-    let grid
+    let grid;
     if (data.length > 0) {
         grid = '<ul id="inv-display">';
-        data.forEach(vehicle => { 
+        data.forEach(vehicle => {
             grid += '<li>';
             grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
             + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
             + 'details"><img src="' + vehicle.inv_thumbnail 
-            +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
+            +'" alt="Photo of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
             +' on CSE Motors" /></a>';
             grid += '<div class="namePrice">';
             grid += '<hr />';
@@ -56,6 +56,30 @@ Util.buildClassificationGrid = async function(data) {
         grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>';
     }
     return grid
+}
+
+// * **************************************
+// * Build the classification view HTML
+// * **************************************
+Util.buildVehicleDetailCard = async function(data) {
+    let card;
+    if (data.length > 0) {
+        card = '<div id="card-display-grid">';
+        data.forEach(vehicle => {
+            card += `<img id="vehicle-img" src="${vehicle.inv_image}" alt="Photo of ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}">`;
+            card += `<section id="vehicle-details">
+                        <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>
+                        <p id="vehicle-price">Price: <span>$${parseInt(vehicle.inv_price).toLocaleString('en-US')}</span></p>
+                        <p id="vehicle-desc">Description: <span>${vehicle.inv_description}</span></p>
+                        <p id="vehicle-color">Color: <span>${vehicle.inv_color}</span></p>
+                        <p id="vehicle-miles">Miles: <span>${vehicle.inv_miles.toLocaleString('en-US')}</span></p>
+                    </section>`
+        })
+        card += '</div>';
+    } else { 
+        card += '<p class="notice">Sorry, no matching vehicle could be found.</p>';
+    }
+    return card
 }
 
 /* ****************************************

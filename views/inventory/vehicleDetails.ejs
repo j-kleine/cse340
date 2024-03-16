@@ -1,0 +1,12 @@
+<!-- Add Content Heading -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- adding capacity for potential future message (e.g. errors) -->
+<%# messages() %>
+
+<!-- Add Selected Vehicle Details Display-->
+<%- card %>
