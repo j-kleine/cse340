@@ -82,6 +82,27 @@ Util.buildVehicleDetailCard = async function(data) {
     return card
 }
 
+// * **************************************
+// * Build the Login view HTML
+// * **************************************
+Util.buildLoginView = async function() {
+    let login = `
+        <form id="login-form" action="">
+            <fieldset>
+                <!-- <legend></legend> -->
+                <label>Email:
+                    <input type="text" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
+                </label>
+                <label>Password:
+                    <input type="text" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required>
+                </label>
+            </fieldset>
+            <input class="submitButton" type="submit" value="Login">
+            <a class="signUp-link" href="#">No account? <span class="link-part">Sign-up</span></a>
+        </form>`;
+    return login
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
