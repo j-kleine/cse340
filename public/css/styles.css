@@ -157,14 +157,11 @@ main {
 
 #login-form fieldset label input {
   border: 3px solid transparent;
+  border-left: 3px solid var(--contrast-color);
   border-radius: var(--border-radius);
   padding: .5rem 1rem;
   font-family: var(--standard-font);
   transition: var(--transition);
-}
-
-#login-form fieldset label input:hover {
-  border-left: 3px solid var(--contrast-color);
 }
 
 #login-form fieldset label input:focus {
@@ -208,6 +205,66 @@ main {
 
 .signUp-link:hover .link-part {
   color: var(--secondary-color);
+}
+
+/* ------------------------ */
+/* Registration Page */
+/* ------------------------ */
+#register-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin: 1rem;
+  padding: 2rem 1rem;
+  max-width: 452px;
+  background-color: #dadada;
+  border-radius: var(--border-radius);
+}
+
+.required-info {
+  margin-left: auto;
+  padding-left: 3px;
+  border-left: 3px solid var(--contrast-color);
+  text-align: right;
+  text-transform: uppercase;
+  font-size: .8rem;
+}
+
+#register-form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: none;
+  padding-top: 0;
+}
+
+#register-form fieldset label {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  font-weight: bold;
+}
+
+#register-form fieldset label input {
+  border: 3px solid transparent;
+  border-left: 3px solid var(--contrast-color);
+  border-radius: var(--border-radius);
+  padding: .5rem 1rem;
+  font-family: var(--standard-font);
+  transition: var(--transition);
+}
+
+#register-form fieldset label input:focus {
+  outline: none;
+  border: 3px solid var(--contrast-color);
+}
+
+.password-info {
+  padding: 0 .5rem;
+  text-transform: uppercase;
+  text-align: justify;
+  font-size: .8rem;
+  font-weight: normal;
 }
 
 /* ------------------------ */

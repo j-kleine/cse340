@@ -87,7 +87,7 @@ Util.buildVehicleDetailCard = async function(data) {
 // * **************************************
 Util.buildLoginView = async function() {
     let login = `
-        <form id="login-form" action="">
+        <form id="login-form">
             <fieldset>
                 <!-- <legend></legend> -->
                 <label>Email:
@@ -98,9 +98,37 @@ Util.buildLoginView = async function() {
                 </label>
             </fieldset>
             <input class="submitButton" type="submit" value="Login">
-            <a class="signUp-link" href="#">No account? <span class="link-part">Sign-up</span></a>
+            <a class="signUp-link" href="/account/register">No account? <span class="link-part">Sign-up</span></a>
         </form>`;
     return login
+}
+
+// * **************************************
+// * Build the Registration HTML
+// * **************************************
+Util.buildRegisterView = async function() {
+    let register = `
+        <form id="register-form">
+            <span class="required-info">All fields are required</span>
+            <fieldset>
+                <!-- <legend></legend> -->
+                <label>First name:
+                    <input type="text" name="account_firstname" id="account-firstname" title="Enter your first name" placeholder="Enter first name" required>
+                </label>
+                <label>Last name:
+                    <input type="text" name="account_lastname" id="account-lastname" title="Enter your last name" placeholder="Enter last name" required>
+                </label>
+                <label>Email:
+                    <input type="text" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
+                </label>
+                <label>Password:
+                    <input type="text" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required>
+                    <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
+                    </label>
+            </fieldset>
+            <input class="submitButton" type="submit" value="Register">
+        </form>`;
+    return register
 }
 
 /* ****************************************
