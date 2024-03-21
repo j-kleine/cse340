@@ -21,6 +21,7 @@ async function buildRegister(req, res, next) {
   let nav = await utilities.getNav();
   const register = await utilities.buildRegisterView();
   res.render("account/register", {
+    errors: null,
     title: "Register",
     nav,
     register,
