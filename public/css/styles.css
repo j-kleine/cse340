@@ -127,6 +127,14 @@ main {
   max-width: 400px;
 }
 
+input:focus:valid {
+  background-color: #c7f9cc;
+}
+
+input:focus:invalid {
+  background-color: #fbc4ab;
+}
+
 /* ------------------------ */
 /* Login Page */
 /* ------------------------ */
@@ -187,6 +195,10 @@ main {
 .submitButton:hover {
   transform: scale(.95);
   box-shadow: transparent 0px 3px 8px;
+}
+
+.submitButton:focus:valid {
+  background-color: var(--primary-color);
 }
 
 .signUp-link {

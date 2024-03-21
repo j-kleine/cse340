@@ -91,10 +91,11 @@ Util.buildLoginView = async function() {
             <fieldset>
                 <!-- <legend></legend> -->
                 <label>Email:
-                    <input type="text" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
+                    <input type="email" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
                 </label>
                 <label>Password:
-                    <input type="text" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required>
+                    <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$">
+                    <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
                 </label>
             </fieldset>
             <input class="submitButton" type="submit" value="Login">
@@ -112,18 +113,18 @@ Util.buildRegisterView = async function() {
             <span class="required-info">All fields are required</span>
             <fieldset>
                 <!-- <legend></legend> -->
-                <label>First name:
+                <label for="account-firstname">First name:
                     <input type="text" name="account_firstname" id="account-firstname" title="Enter your first name" placeholder="Enter first name" required>
                 </label>
-                <label>Last name:
+                <label for="account-lastname">Last name:
                     <input type="text" name="account_lastname" id="account-lastname" title="Enter your last name" placeholder="Enter last name" required>
                 </label>
-                <label>Email:
+                <label for="account-email">Email:
                     <input type="email" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
                 </label>
-                <label>Password:
+                <label for="account-password">Password:
                     <span class="pwrd-input">
-                        <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required>
+                        <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$">
                         <img id="pswdBtn" src="/images/site/eye-close.webp" alt="icon for display/hide password button">
                     </span>
                     <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
