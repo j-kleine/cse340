@@ -108,7 +108,7 @@ Util.buildLoginView = async function() {
 // * **************************************
 Util.buildRegisterView = async function() {
     let register = `
-        <form id="register-form">
+        <form id="register-form" action="/account/register" method="post">
             <span class="required-info">All fields are required</span>
             <fieldset>
                 <!-- <legend></legend> -->
