@@ -119,15 +119,32 @@ Util.buildRegisterView = async function() {
                     <input type="text" name="account_lastname" id="account-lastname" title="Enter your last name" placeholder="Enter last name" required>
                 </label>
                 <label>Email:
-                    <input type="text" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
+                    <input type="email" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
                 </label>
                 <label>Password:
-                    <input type="text" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required>
+                    <span class="pwrd-input">
+                        <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required>
+                        <img id="pswdBtn" src="/images/site/eye-close.webp" alt="icon for display/hide password button">
+                    </span>
                     <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
-                    </label>
+                </label>
             </fieldset>
             <input class="submitButton" type="submit" value="Register">
-        </form>`;
+        </form>
+        <script>
+            const pswdBtn = document.querySelector("#pswdBtn");
+            pswdBtn.addEventListener("click", function() {
+                const pswdInput = document.querySelector("#account-password");
+                const inputType = pswdInput.getAttribute("type");
+                if (inputType == "password") {
+                    pswdInput.setAttribute("type", "text");
+                    pswdBtn.setAttribute("src", "/images/site/eye-open.webp");
+                } else {
+                    pswdInput.setAttribute("type", "password");
+                    pswdBtn.setAttribute("src", "/images/site/eye-close.webp");
+                }
+            })
+        </script>`;
     return register
 }
 

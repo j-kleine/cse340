@@ -259,6 +259,31 @@ main {
   border: 3px solid var(--contrast-color);
 }
 
+.pwrd-input {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pwrd-input input {
+  width: 100%;
+}
+
+.pwrd-input img {
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+#pswdBtn:hover {
+  filter: brightness(.75);
+}
+
+#pswdBtn:active {
+  transform: scale(.95);
+}
+
 .password-info {
   padding: 0 .5rem;
   text-transform: uppercase;
