@@ -7,5 +7,26 @@
 
 <%- messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <%  }) %>
+    </ul>
+<% } %>
+
 <!-- Add Login Form-->
-<%- login %>
+<form id="login-form" action="/account/login" method="post">
+    <fieldset>
+        <!-- <legend></legend> -->
+        <label>Email:
+            <input type="email" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required value="<%= locals.account_email %>">
+        </label>
+        <label>Password:
+            <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
+        </label>
+    </fieldset>
+    <input class="submitButton" type="submit" value="Login">
+    <a class="signUp-link" href="/account/register">No account? <span class="link-part">Sign-up</span></a>
+</form>
