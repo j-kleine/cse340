@@ -34,4 +34,40 @@ invCont.buildByInventoryId = async function (req, res, next) {
     })
 }
 
+// * ***************************
+// *  Build vehicle management view
+// * ***************************
+invCont.buildInvManagement = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    errors: null,
+  })
+}
+
+// * ***************************
+// *  Build Add Classification management view
+// * ***************************
+invCont.buildAddClassManagement = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    errors: null,
+  })
+}
+
+// * ***************************
+// *  Build Add Vehicle/Inventory management view
+// * ***************************
+invCont.buildAddVehicleManagement = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/add-inventory", {
+    title: "Add New Vehicle",
+    nav,
+    errors: null,
+  })
+}
+
 module.exports = invCont;

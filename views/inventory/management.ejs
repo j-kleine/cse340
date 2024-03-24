@@ -1,0 +1,15 @@
+<!-- Add Content Heading -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- adding capacity for potential future message (e.g. errors) -->
+<% messages() %>
+
+<!-- Add Inventory Management Links Display-->
+<ul class="inv-management">
+    <li><a href="/inv/add-class">Add New Classification</a></li>
+    <li><a href="/inv/add-inv">Add New Vehicle</a></li>
+</ul>

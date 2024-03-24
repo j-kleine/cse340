@@ -16,7 +16,7 @@
 <% } %>
 
 <!-- Add Register Form-->
-<form id="register-form" action="/account/register" method="post">
+<form id="register-form" class="input-form" action="/account/register" method="post">
     <span class="required-info">All fields are required</span>
     <fieldset>
         <!-- <legend></legend> -->
@@ -34,7 +34,7 @@
                 <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
                 <img id="pswdBtn" src="/images/site/eye-close.webp" alt="icon for display/hide password button">
             </span>
-            <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
+            <span class="required-pattern-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
         </label>
     </fieldset>
     <input class="submitButton" type="submit" value="Register">
