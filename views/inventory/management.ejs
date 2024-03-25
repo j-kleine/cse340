@@ -8,8 +8,16 @@
 <!-- adding capacity for potential future message (e.g. errors) -->
 <% messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
 <!-- Add Inventory Management Links Display-->
 <ul class="inv-management">
-    <li><a href="/inv/add-class">Add New Classification</a></li>
-    <li><a href="/inv/add-inv">Add New Vehicle</a></li>
+    <li><a href="/inv/add-classification">Add New Classification</a></li>
+    <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
 </ul>

@@ -83,71 +83,22 @@ Util.buildVehicleDetailCard = async function(data) {
 }
 
 // * **************************************
-// * Build the Login view HTML
+// * Build the classification drop-down list for Add New Vehicle HTML
 // * **************************************
-// Util.buildLoginView = async function() {
-//     let login = `
-//         <form id="login-form">
-//             <fieldset>
-//                 <!-- <legend></legend> -->
-//                 <label>Email:
-//                     <input type="email" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required>
-//                 </label>
-//                 <label>Password:
-//                     <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$">
-//                     <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
-//                 </label>
-//             </fieldset>
-//             <input class="submitButton" type="submit" value="Login">
-//             <a class="signUp-link" href="/account/register">No account? <span class="link-part">Sign-up</span></a>
-//         </form>`;
-//     return login
-// }
-
-// * **************************************
-// * Build the Registration HTML
-// * **************************************
-// Util.buildRegisterView = async function() {
-//     let register = `
-//         <form id="register-form" action="/account/register" method="post">
-//             <span class="required-info">All fields are required</span>
-//             <fieldset>
-//                 <!-- <legend></legend> -->
-//                 <label for="account-firstname">First name:
-//                     <input type="text" name="account_firstname" id="account-firstname" title="Enter your first name" placeholder="Enter first name" required value="<%= locals.account_firstname %>">
-//                 </label>
-//                 <label for="account-lastname">Last name:
-//                     <input type="text" name="account_lastname" id="account-lastname" title="Enter your last name" placeholder="Enter last name" required value="<%= locals.account_lastname %>">
-//                 </label>
-//                 <label for="account-email">Email:
-//                     <input type="email" name="account_email" id="account-email" title="Enter your email address" placeholder="Enter email address" required value="<%= locals.account_email %>">
-//                 </label>
-//                 <label for="account-password">Password:
-//                     <span class="pwrd-input">
-//                         <input type="password" name="account_password" id="account-password" title="Enter your password" placeholder="Enter password" required pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$">
-//                         <img id="pswdBtn" src="/images/site/eye-close.webp" alt="icon for display/hide password button">
-//                     </span>
-//                     <span class="password-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
-//                 </label>
-//             </fieldset>
-//             <input class="submitButton" type="submit" value="Register">
-//         </form>
-//         <script>
-//             const pswdBtn = document.querySelector("#pswdBtn");
-//             pswdBtn.addEventListener("click", function() {
-//                 const pswdInput = document.querySelector("#account-password");
-//                 const inputType = pswdInput.getAttribute("type");
-//                 if (inputType == "password") {
-//                     pswdInput.setAttribute("type", "text");
-//                     pswdBtn.setAttribute("src", "/images/site/eye-open.webp");
-//                 } else {
-//                     pswdInput.setAttribute("type", "password");
-//                     pswdBtn.setAttribute("src", "/images/site/eye-close.webp");
-//                 }
-//             })
-//         </script>`;
-//     return register
-// }
+Util.buildClassificationList = async function (classification_id = null) {
+    let data = await invModel.getClassifications();
+    let classificationList = '<select name="classification_id" id="classificationList" title="Choose a classification" required>';
+    classificationList += "<option value=''>Choose a Classification</option>";
+    data.rows.forEach((row) => {
+      classificationList += '<option value="' + row.classification_id + '"';
+      if (classification_id != null && row.classification_id == classification_id) {
+        classificationList += " selected ";
+      }
+      classificationList += ">" + row.classification_name + "</option>";
+    })
+    classificationList += "</select>";
+    return classificationList
+  }
 
 /* ****************************************
  * Middleware For Handling Errors

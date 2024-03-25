@@ -15,10 +15,10 @@
 <% } %>
 
 <!-- Build Add Classification Form-->
-<form id="add-class-form" class="input-form" action="/inv/add-class" method="post">
+<form id="add-class-form" class="input-form" action="/inv/add-classification" method="post">
     <fieldset>
         <label>New Classification Name:
-            <input type="text" name="classification_name" id="classification-name" title="Enter your new classification" placeholder="Enter classification" required pattern="^[a-zA-Z]$" value="<%= locals.account_email %>">
+            <input type="text" name="classification_name" id="classification-name" title="Enter your new classification" placeholder="Enter classification" required pattern="^[a-zA-Z]+$" value="<%= locals.classification_name %>">
             <span class="required-pattern-info">New Classification Name cannot contain a space or special character of any kind.</span>
         </label>
     </fieldset>
