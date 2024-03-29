@@ -23,6 +23,9 @@ router.get("/add-inventory", utilities.handleErrors(invController.buildAddVehicl
 // Route to build Selected classification result for management view
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
+// Route to build "Modify selected vehicle" view
+router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildModifyInventoryView));
+
 // Route to process the Add Classification data
 router.post(
     "/add-classification",

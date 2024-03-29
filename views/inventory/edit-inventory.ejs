@@ -14,18 +14,18 @@
     </ul>
 <% } %>
 
-<!-- Build Add Vehicle/Inventory Form-->
-<form id="add-inv-form" class="input-form" action="/inv/add-inventory" method="post">
+<!-- Build Modify Vehicle/Inventory Form-->
+<form id="add-inv-form" class="input-form" action="/inv/edit-inventory" method="post">
     <span class="required-info">All fields are required</span>
     <fieldset>
-        <label>Choose Classification:
+        <label>Update Classification:
             <%- classification_select %>
         </label>
         <label>Make:
-            <input type="text" name="inv_make" id="inv-make" title="Enter your new vehicle's make" placeholder="Min of 3 characters" required pattern="^[^\s][a-zA-Z\s]{2,}$" value="<%= locals.inv_make %>">
+            <input type="text" name="inv_make" id="inv-make" title="Enter your new vehicle's make" placeholder="Min of 3 characters" required pattern="^[^\s][a-zA-Z\s]{3,}$" value="<%= locals.inv_make %>">
         </label>
         <label>Model:
-            <input type="text" name="inv_model" id="inv-model" title="Enter your new vehicle's model" placeholder="Min of 3 characters" required pattern="^[^\s][a-zA-Z\s]{2,}$" value="<%= locals.inv_model %>">
+            <input type="text" name="inv_model" id="inv-model" title="Enter your new vehicle's model" placeholder="Min of 3 characters" required pattern="^[^\s][a-zA-Z\s]{3,}$" value="<%= locals.inv_model %>">
         </label>
         <label>Description:
             <textarea name="inv_description" id="inv-description" title="Enter your new vehicle's description" rows="5" required><%= locals.inv_description %></textarea>
@@ -49,5 +49,5 @@
             <input type="text" name="inv_color" id="inv-color" title="Enter your new vehicle color" required pattern="^[^\s][a-zA-Z\s]{2,}$" value="<%= locals.inv_color %>">
         </label>
     </fieldset>
-    <input class="submitButton" type="submit" value="Add Vehicle">
+    <input class="submitButton" type="submit" value="Update Vehicle">
 </form>
