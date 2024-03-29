@@ -1,0 +1,41 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <%  }) %>
+    </ul>
+<% } %>
+
+<!-- Build Modify Vehicle/Inventory Form-->
+<form id="updateForm" class="input-form" action="/inv/delete" method="post">
+    <fieldset>
+        <label>Classification:
+            <%- classification_select %>
+        </label>
+        <label>Make:
+            <input type="text" name="inv_make" id="inv-make" title="Enter your new vehicle's make" placeholder="Min of 3 characters" required pattern="^[^\s][a-zA-Z\s]{3,}$" value="<%= locals.inv_make %>" readonly>
+        </label>
+        <label>Model:
+            <input type="text" name="inv_model" id="inv-model" title="Enter your new vehicle's model" placeholder="Min of 3 characters" required pattern="^[^\s][a-zA-Z\s]{3,}$" value="<%= locals.inv_model %>" readonly>
+        </label>
+        <label>Price:
+            <input type="text" name="inv_price" id="inv-price" title="Enter your new vehicle's price" placeholder="Decimel or Integer" required pattern="^[0-9,.]+$" value="<%= locals.inv_price %>" readonly>
+        </label>
+        <label>Year:
+            <input type="number" name="inv_year" id="inv-year" title="Enter your new vehicle's year" placeholder="4-digit year" required min="1000" max="9999" value="<%= locals.inv_year %>" readonly>
+        </label>
+    </fieldset>
+    <p>Confirm Deletion - The delete is permanent.</p>
+    <input class="submitButton" type="submit" value="Delete Vehicle">
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
+</form>
