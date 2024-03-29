@@ -15,7 +15,7 @@
 <% } %>
 
 <!-- Build Modify Vehicle/Inventory Form-->
-<form id="add-inv-form" class="input-form" action="/inv/edit-inventory" method="post">
+<form id="updateForm" class="input-form" action="/inv/update" method="post">
     <span class="required-info">All fields are required</span>
     <fieldset>
         <label>Update Classification:
@@ -49,5 +49,10 @@
             <input type="text" name="inv_color" id="inv-color" title="Enter your new vehicle color" required pattern="^[^\s][a-zA-Z\s]{2,}$" value="<%= locals.inv_color %>">
         </label>
     </fieldset>
-    <input class="submitButton" type="submit" value="Update Vehicle">
+    <input class="submitButton" type="submit" value="Update Vehicle" disabled>
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
 </form>
+
+<script src="../../js/inv-update.js"></script>

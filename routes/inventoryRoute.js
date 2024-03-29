@@ -40,4 +40,11 @@ router.post(
     invValidate.checkInventoryData,
     utilities.handleErrors(invController.addVehicle));
 
+// Route to rocess the Update/Modify Vehicle data
+router.post(
+    "/update",
+    invValidate.inventoryRules(),
+    invValidate.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory));
+
 module.exports = router;
