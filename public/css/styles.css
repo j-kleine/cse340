@@ -57,6 +57,21 @@ a:hover {
 }
 
 /* ------------------------ */
+/* General Notice Messages Styling */
+/* ------------------------ */
+.notice {
+  padding-left: 1rem;
+  list-style: none;
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.notice li {
+  padding: .25rem 0;
+}
+
+/* ------------------------ */
 /* General Forms Styling */
 /* ------------------------ */
 .input-form {
