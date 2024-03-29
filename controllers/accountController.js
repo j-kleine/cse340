@@ -58,7 +58,7 @@ async function registerAccount(req, res) {
       title: "Registration",
       nav,
       errors: null,
-    })
+    });
   }
 
   const regResult = await accountModel.registerAccount(
@@ -72,19 +72,19 @@ async function registerAccount(req, res) {
     req.flash(
       "notice",
       `Congratulations, you're registered, ${account_firstname}. Please log in.`
-    )
+    );
     res.status(201).render("account/login", {
       title: "Login",
       nav,
       errors: null,
-    })
+    });
   } else {
     req.flash("notice", "Sorry, the registration failed.");
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
       errors: null,
-    })
+    });
   }
 }
 
