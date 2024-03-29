@@ -43,6 +43,10 @@ h1, h2, h3 {
   font-family: var(--header-font);
 }
 
+p {
+  margin: 0;
+}
+
 a {
   color: var(--primary-color);
   transition: var(--transition);
@@ -323,6 +327,51 @@ main {
 
 .inv-management li {
   padding: .25rem 0;
+}
+
+#manage-inventory-container {
+  padding: 2rem 0 2rem 1rem;
+}
+
+#manage-inventory-container select {
+  margin: 1rem 0;
+  border: 3px solid transparent;
+  border-left: 3px solid var(--contrast-color);
+  border-radius: var(--border-radius);
+  padding: .5rem 1rem;
+  font-family: var(--standard-font);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+#manage-inventory-container select:focus {
+  outline: none;
+  border: 3px solid var(--contrast-color);
+  box-shadow: transparent 0px 3px 8px;
+}
+
+#inventoryDisplay {
+  box-shadow: var(--box-shadow);
+}
+
+#inventoryDisplay, th, td {
+  border-collapse: collapse;
+}
+
+/* #inventoryDisplay tr {
+  height: 2rem;
+} */
+
+#inventoryDisplay tbody tr {
+  border-radius: var(--border-radius);
+}
+
+#inventoryDisplay tbody tr:nth-child(odd) {
+  background-color: #dadada;
+}
+
+#inventoryDisplay td {
+  padding: .5rem .75rem;
 }
 
 /* ------------------------ */

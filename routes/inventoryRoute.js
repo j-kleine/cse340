@@ -20,6 +20,9 @@ router.get("/add-classification", utilities.handleErrors(invController.buildAddC
 // Route to build Add Vehicle for vehicle/inventory management
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddVehicleManagement));
 
+// Route to build Selected classification result for management view
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
 // Route to process the Add Classification data
 router.post(
     "/add-classification",
