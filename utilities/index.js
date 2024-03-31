@@ -144,4 +144,20 @@ Util.checkLogin = (req, res, next) => {
     }
 }
 
+/* ****************************************
+ *  Check Account type on login
+ * ************************************ */
+Util.checkAuthorization = (req, res, next) => {
+    if (res.locals.accountData) {
+        if (res.locals.accountData.account_type === "Employee" || res.locals.accountData.account_type === "Admin") {
+            next();
+        } else {
+            req.flash("notice", "You are not authorized to access this page.");
+            return res.redirect("/account/login")
+        }
+    } else {
+        return res.redirect("/account/login")
+    }
+}
+
 module.exports = Util;
