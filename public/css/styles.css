@@ -201,7 +201,6 @@ input:focus:invalid {
 /* ------------------------ */
 /* Header */
 /* ------------------------ */
-
 header {
   display: flex;
   justify-content: space-between;
@@ -227,11 +226,14 @@ header {
 }
 
 #tools {
+  display: flex;
+  flex-direction: column;
   padding-right: .25rem;
   text-align: right;
 }
 
 #tools a {
+  margin-left: auto;
   color: var(--primary-color);
   text-decoration: none;
   font-weight: bold;
@@ -373,10 +375,6 @@ main {
   border-collapse: collapse;
 }
 
-/* #inventoryDisplay tr {
-  height: 2rem;
-} */
-
 #inventoryDisplay tbody tr {
   border-radius: var(--border-radius);
 }
@@ -392,7 +390,6 @@ main {
 /* ------------------------ */
 /* Home Page */
 /* ------------------------ */
-
 .hero-container {
   position: relative;
   text-align: right;
