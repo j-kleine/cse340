@@ -334,6 +334,22 @@ main {
 }
 
 /* ------------------------ */
+/* Account View */
+/* ------------------------ */
+.account-manageInventory {
+  margin: 1rem 0;
+}
+
+/* ------------------------ */
+/* Edit Account View */
+/* ------------------------ */
+.pwd-warning {
+  margin: 0 auto;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* ------------------------ */
 /* Inventory Management */
 /* ------------------------ */
 .inv-management {
@@ -591,6 +607,7 @@ main {
 /* ------------------------ */
 
 footer {
+  margin-top: 2rem;
   padding: .25rem;
 }
 

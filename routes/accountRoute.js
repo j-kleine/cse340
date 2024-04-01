@@ -33,4 +33,33 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
 );
 
+// Route to deliver Update Account Information View
+router.get(
+    "/update/:accountId",
+    utilities.checkLogin,
+    utilities.handleErrors(accountController.buildAccountUpdate)
+);
+
+// Route to post Update Account Info
+router.post(
+    "/updateInfo",
+    regValidate.updateInfoRules(),
+    regValidate.checkUpdateInfoData,
+    utilities.handleErrors(accountController.updateAccount)
+);
+
+// Route to post Update Account Password
+router.post(
+    "/changePassword",
+    regValidate.updatePwdRules(),
+    regValidate.checkUpdatePwdData,
+    utilities.handleErrors(accountController.updatePassword)
+);
+
+// Route to logout client and redirect to Home page
+router.get(
+    "/logout",
+    utilities.handleErrors(accountController.accountLogout)
+);
+
 module.exports = router;

@@ -120,7 +120,7 @@ async function updateInventory(
       ])
       return data.rows[0]
     } catch (error) {
-      console.error("model error: " + error)
+      console.error("model error: " + error);
     }
   }
 

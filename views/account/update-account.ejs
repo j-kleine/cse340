@@ -1,0 +1,55 @@
+<!-- Add Content Heading -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <%  }) %>
+    </ul>
+<% } %>
+
+<!-- Build Modify Vehicle/Inventory Form-->
+<form id="updateAccountForm" class="input-form" action="/account/updateInfo" method="post">
+    <fieldset>
+        <label for="account-firstname">First name:
+            <input type="text" name="account_firstname" id="account-firstname" title="Edit your first name" placeholder="Edit first name" required value="<%= locals.account_firstname %>">
+        </label>
+        <label for="account-lastname">Last name:
+            <input type="text" name="account_lastname" id="account-lastname" title="Edit your last name" placeholder="Edit last name" required value="<%= locals.account_lastname %>">
+        </label>
+        <label for="account-email">Email:
+            <input type="email" name="account_email" id="account-email" title="Edit your email address" placeholder="Edit email address" required value="<%= locals.account_email %>">
+        </label>
+    </fieldset>
+    <input class="submitButton" type="submit" value="Update">
+    <input type="hidden" name="account_id"
+    <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+    <% } %>>
+</form>
+
+<h2>Update Password</h2>
+<form id="changePasswordForm" class="input-form" action="/account/changePassword" method="post">
+    <fieldset>
+        <span class="pwd-warning">* Your original password will be changed *</span>
+        <label for="account-password">Password:
+            <span class="pwrd-input">
+                <input type="password" name="account_password" id="account-password" title="Enter your new password" placeholder="Enter new password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                <img id="pswdBtn" src="/images/site/eye-close.webp" alt="icon for display/hide password button">
+            </span>
+            <span class="required-pattern-info">Password must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</span>
+        </label>
+    </fieldset>
+    <input class="submitButton" type="submit" value="Change Password">
+    <input type="hidden" name="account_id"
+    <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+    <% } %>>
+</form>
+
+<script src="../../js/show-hide-password.js"></script>

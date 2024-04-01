@@ -56,7 +56,7 @@ validate.inventoryRules = () => {
       .escape()
       .notEmpty().withMessage("Please provide a make.")
       .isLength({ min: 3 }).withMessage("Make must be min 3 characters long.")
-      .matches(/^[^\s][a-zA-Z\s]{3,}$/).withMessage("Make must be alphabetic characters only."),
+      .matches(/^[^\s][a-zA-Z\s]{2,}$/).withMessage("Make must be alphabetic characters only."),
 
     // inv_model is required and must be string
     body("inv_model")
@@ -64,7 +64,7 @@ validate.inventoryRules = () => {
       .escape()
       .notEmpty().withMessage("Please provide a model.")
       .isLength({ min: 3 }).withMessage("Model must be min 3 characters long.")
-      .matches(/^[^\s][a-zA-Z\s]{3,}$/).withMessage("Model must be alphabetic characters only."),
+      .matches(/^[^\s][a-zA-Z\s]{2,}$/).withMessage("Model must be alphabetic characters only."),
 
     // inv_year is required and must be string
     body("inv_year")

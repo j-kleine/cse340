@@ -15,5 +15,16 @@
     </ul>
 <% } %>
 
-<!-- Add Acount Management -->
-<h2>You're logged in.</h2>
+<!-- Add Account Info -->
+<section class="account-container">
+    <h2>Welcome <%= locals.accountData.account_firstname %>!</h2>
+    <p><a href="/account/update/<%= locals.accountData.account_id %>">-> Update Account Information</a></p>
+</section>
+
+<% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
+    <section class="account-manageInventory">
+        <h3>Inventory Management</h3>
+        <p><a title="Load Inventory Management" href="/inv/">-> go to Inventory Management</a></p>
+    </section>
+<% } %>
+
