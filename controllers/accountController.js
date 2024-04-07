@@ -2,6 +2,7 @@ const accountModel = require("../models/account-model");
 const utilities = require("../utilities");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const invCont = require("./invController");
 require("dotenv").config();
 
 /* ****************************************
@@ -237,4 +238,36 @@ async function accountLogout(req, res) {
   });
 }
 
-module.exports = { buildAccountManagement, buildLogin, accountLogin, buildRegister, registerAccount, buildAccountUpdate, updateAccount, updatePassword, accountLogout }
+// Deliver favorites view
+async function buildFavorites(req, res, next) {
+  // const classification_id = req.params.classificationId;
+  let data = await accountModel.getFavorites(res?.locals?.accountData?.account_id);
+  let nav = await utilities.getNav();
+  const grid = await utilities.buildClassificationGrid(data);
+  res.render("account/favorites", {
+    errors: null,
+    title: "My Favorites",
+    nav,
+    grid,
+  })
+}
+
+/* ***************************
+ *  add a Favorite 
+ * ************************** */
+async function addFavorite(req, res, next) {
+  const inv_id = req.params.inventoryId;
+  const data = await accountModel.addFavorite(res?.locals?.accountData?.account_id, inv_id);
+  invCont.buildByInventoryId(req, res, next);
+};
+
+/* ***************************
+ *  remove a Favorite 
+ * ************************** */
+async function removeFavorite(req, res, next) {
+  const inv_id = req.params.inventoryId;
+  const data = await accountModel.removeFavorite(res?.locals?.accountData?.account_id, inv_id);
+  invCont.buildByInventoryId(req, res, next);
+};
+
+module.exports = { buildAccountManagement, buildLogin, accountLogin, buildRegister, registerAccount, buildAccountUpdate, updateAccount, updatePassword, accountLogout, buildFavorites, addFavorite, removeFavorite }

@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+const accountModel = require("../models/account-model");
 const utilities = require("../utilities/");
 
 const invCont = {};
@@ -8,7 +9,7 @@ const invCont = {};
 invCont.buildByClassificationId = async function (req, res, next) {
     const classification_id = req.params.classificationId;
     const data = await invModel.getInventoryByClassificationId(classification_id);
-    const grid = await utilities.buildClassificationGrid(data);
+    const grid = await utilities.buildClassificationGrid(data, );
     let nav = await utilities.getNav();
     const className = data[0].classification_name;
     res.render("./inventory/classification", {
@@ -23,8 +24,10 @@ invCont.buildByClassificationId = async function (req, res, next) {
 // * ***************************
 invCont.buildByInventoryId = async function (req, res, next) {
     const inv_id = req.params.inventoryId;
-    const data = await invModel.getVehicleDetailsByInventoryId(inv_id);
-    const card = await utilities.buildVehicleDetailCard(data);
+    const account_id = res?.locals?.accountData?.account_id;
+    const data = await invModel.getVehicleDetailsByInventoryId(inv_id, account_id);
+    const favoriteExists = await accountModel.checkExistingFavorite(account_id, inv_id);
+    const card = await utilities.buildVehicleDetailCard(data, res?.locals?.accountData?.account_id != null, favoriteExists);
     let nav = await utilities.getNav();
     const vehicleName = `${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model}`;
     res.render("./inventory/vehicleDetails", {
@@ -32,6 +35,8 @@ invCont.buildByInventoryId = async function (req, res, next) {
       nav,
       card,
       errors: null,
+      data,
+      inv_id,
     })
 }
 

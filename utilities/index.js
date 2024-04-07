@@ -61,21 +61,28 @@ Util.buildClassificationGrid = async function(data) {
 }
 
 // * **************************************
-// * Build the classification view HTML
+// * Build the vehicle detail view HTML
 // * **************************************
-Util.buildVehicleDetailCard = async function(data) {
+Util.buildVehicleDetailCard = async function(data, loggedin, isFavorite) {
     let card;
     if (data.length > 0) {
         card = '<div id="card-display-grid">';
         data.forEach(vehicle => {
             card += `<img id="vehicle-img" src="${vehicle.inv_image}" alt="Photo of ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}">`;
-            card += `<section id="vehicle-details">
-                        <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>
-                        <p id="vehicle-price">Price: <span>$${parseInt(vehicle.inv_price).toLocaleString('en-US')}</span></p>
-                        <p id="vehicle-desc">Description: <span>${vehicle.inv_description}</span></p>
-                        <p id="vehicle-color">Color: <span>${vehicle.inv_color}</span></p>
-                        <p id="vehicle-miles">Miles: <span>${vehicle.inv_miles.toLocaleString('en-US')}</span></p>
-                    </section>`
+            card += '<section id="vehicle-details">';
+            card += `<h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>`;
+            if (loggedin) {
+                if (isFavorite) {
+                    card += `<a id="like-btn" href="/account/favorites/${data[0].inv_id}/remove"><img id="like-icon" src="/images/site/heart-full.png" alt="Icon for like button">Remove from favorites</a>`;
+                } else {
+                    card += `<a id="like-btn" href="/account/favorites/${data[0].inv_id}/add"><img id="like-icon" src="/images/site/heart-empty.png" alt="Icon for like button">Add to favorites</a>`;
+                }
+            }
+            card += `<p id="vehicle-price">Price: <span>$${parseInt(vehicle.inv_price).toLocaleString('en-US')}</span></p>
+                    <p id="vehicle-desc">Description: <span>${vehicle.inv_description}</span></p>
+                    <p id="vehicle-color">Color: <span>${vehicle.inv_color}</span></p>
+                    <p id="vehicle-miles">Miles: <span>${vehicle.inv_miles.toLocaleString('en-US')}</span></p>`
+            card += '</section>';
         })
         card += '</div>';
     } else { 
