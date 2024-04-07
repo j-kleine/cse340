@@ -87,4 +87,59 @@ async function updatePassword(account_id, account_password) {
   }
 }
 
-  module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccountInfo, updatePassword };
+/* *****************************
+*   get Favorites
+* *************************** */
+async function getFavorites(account_id) {
+  try {
+    const sql = "SELECT * FROM public.inventory AS i JOIN public.classification AS c ON i.classification_id = c.classification_id JOIN public.favorites AS f on f.inv_id = i.inv_id and f.account_id = $1";
+    const data = await pool.query(sql, [account_id]);
+    return data.rows;
+  } catch (error) {
+    console.log({error})
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+/* *****************************
+*   add a Favorite
+* *************************** */
+async function addFavorite(account_id, inv_id) {
+  try {
+    const sql = "INSERT INTO public.favorites (account_id, inv_id) VALUES ($1, $2)";
+    const data = await pool.query(sql, [account_id, inv_id]);
+    return data.rows;
+  } catch (error) {
+    console.log({error})
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+/* *****************************
+*   remove a Favorite
+* *************************** */
+async function removeFavorite(account_id, inv_id) {
+  try {
+    const sql = "DELETE FROM public.favorites WHERE account_id = $1 AND inv_id = $2";
+    const data = await pool.query(sql, [account_id, inv_id]);
+    return data.rows;
+  } catch (error) {
+    console.log({error})
+    console.error("getclassificationsbyid error " + error);
+  }
+}
+
+/* **********************
+ * Check for existing Favorite
+ * ********************* */
+async function checkExistingFavorite(account_id, inv_id) {
+  try {
+    const sql = "SELECT * FROM public.favorites WHERE account_id = $1 AND inv_id = $2";
+    const favorite = await pool.query(sql, [account_id, inv_id]);
+    return favorite.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
+  module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccountInfo, updatePassword, getFavorites, addFavorite, removeFavorite, checkExistingFavorite };

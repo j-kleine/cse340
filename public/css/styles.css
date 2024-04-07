@@ -336,6 +336,9 @@ main {
 /* ------------------------ */
 /* Account View */
 /* ------------------------ */
+.account-container h3 {
+  margin-top: 1rem;
+}
 .account-manageInventory {
   margin: 1rem 0;
 }
@@ -573,6 +576,19 @@ main {
   width: 100%;
   height: auto;
   border-radius: var(--border-radius);
+}
+
+#like-btn {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  margin: 0 0 0 .5rem;
+}
+
+#like-icon {
+  cursor: pointer;
+  width: 32px;
+  transition: var(--transition);
 }
 
 #vehicle-details p:nth-child(even) {

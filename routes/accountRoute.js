@@ -2,6 +2,7 @@
 const express = require("express");
 const router = new express.Router();
 const accountController = require("../controllers/accountController");
+const invController = require("../controllers/invController");
 const utilities = require("../utilities");
 const regValidate = require('../utilities/account-validation');
 
@@ -60,6 +61,30 @@ router.post(
 router.get(
     "/logout",
     utilities.handleErrors(accountController.accountLogout)
+);
+
+// Route to My Favorites page
+router.get(
+    "/favorites",
+    utilities.handleErrors(accountController.buildFavorites)
+);
+
+// Router to add a favorite
+router.get(
+    "/favorites/:inventoryId/add",
+    utilities.handleErrors(accountController.addFavorite)
+);
+
+// Router to remove a favorite
+router.get(
+    "/favorites/:inventoryId/remove",
+    utilities.handleErrors(accountController.removeFavorite)
+);
+
+// Route to build vehicle details
+router.get(
+    "inv/detail/:inventoryId",
+    utilities.handleErrors(invController.buildByInventoryId)
 );
 
 module.exports = router;

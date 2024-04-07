@@ -19,12 +19,14 @@
 <section class="account-container">
     <h2>Welcome <%= locals.accountData.account_firstname %>!</h2>
     <p><a href="/account/update/<%= locals.accountData.account_id %>">-> Update Account Information</a></p>
+    <h3>Favorites</h3>
+    <p><a href="/account/favorites">-> My Favorites</a></p>
 </section>
 
 <% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
     <section class="account-manageInventory">
         <h3>Inventory Management</h3>
-        <p><a title="Load Inventory Management" href="/inv/">-> go to Inventory Management</a></p>
+        <p><a title="Load Inventory Management" href="/inv/">-> Edit Inventory</a></p>
     </section>
 <% } %>
 
